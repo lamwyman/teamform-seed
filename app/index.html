@@ -79,12 +79,15 @@
 					<li><a href="create_event.html">ADMIN</a></li>
 					<li><a class="btn" href="signin.html">SIGN IN</a></li>
 					<li><a class="btn" href="signup.html">SIGN UP</a></li>
-					<li><a class="btn" ng-click="logout()">SIGN OUT</a></li>
 				</ul>
 			</div><!--/.nav-collapse -->
 		</div>
 	</div> 
 	<!-- /.navbar -->
+	
+	
+
+
 	
     <!-- Header -->
 	<header id="head">
@@ -96,6 +99,8 @@
                <p class="lead"> The following roles are supported in teamform:</p>
 
                <div class="row">
+			   <font color="white">
+
                   <div class="col-md-4">
                      <h3 class="text-center">Administrator</h3>
                      <ul>
@@ -117,6 +122,7 @@
                      <ul>
                         <li>Be able to request to join multiple teams</li>
                      </ul>
+					 </font>
                   </div>
 		</div>
 	</header>
@@ -131,14 +137,14 @@
                      
                      <div class="text-center">
 						<br>
-                        <h1 class="thin"><p> You are cureently login as {{userObj.name}}</p></h1>
+                        <h1 class="thin"><p> You are not logged-in yet </p></h1>
 
-                        <p>A real-time online team forming app for any event</p>
+                        <p>A real-time online team forming app for football events</p>
                      </div>
 					<div class="jumbotron top-space">
                      <div class="text-center">
 
-                        <input id="input_text" type="text" class="input-lg">
+                        <input id="input_text" type="text" class="input-lg" placeholder="Enter a name here">
                         <br>
                         <em>Enter a name (e.g. COMP3111-L1, COMP3111-L2 or COMP3111H) to create/join an event</em>
                         <br>
@@ -170,24 +176,27 @@
 	
 	<!-- Highlights - jumbotron -->
 	<div class="jumbotron top-space parallax">
-		<div align="center" class="container">
-			<div class="row">
 
-				<table border="1">
-				<tr>
-				<td> Event Name </td><td> Holder </td><td> Team Size </td><td></td></tr>
+		<div class="container text-center">
+			<div class="row" >
 
-				<tr ng-repeat="e in events">
-				<td>{{e.param.EventName}} </td>
-				<td>{{e.param.EventAdmin}} </td>
-				<td>{{e.param.TeamSize}}</td>
-				<td><button type="button" class="btn btn-primary btn-sm" ng-click ="viewevent(e.param.EventName);">More Info</button></td>
-				</tr>
+			<table align="center" border="1" style="background-color:#FFFFE0;border-color:#BDB76B;">
+			<tr style="background-color:#BDB76B;color:#ffffff;">
+			<td><b> Event Name </b></td><td><b> Holder </b></td><td><b> Team Size </b></td><td></td></tr>
 
-				</table>
 
-			</div>
-		</div>
+			<tr ng-repeat="e in events">
+			<td>{{e.param.EventName}} </td>
+			<td>{{e.param.EventAdmin}} </td>
+			<td>{{e.param.TeamSize}}</td>
+			<td><button type="button" class="btn btn-primary btn-sm" ng-click ="viewevent(e.param.EventName);">More Info</button></td>
+			</tr>
+
+			</table>
+	</div>
+	</div>
+	</div>
+
 	<!-- /Highlights -->
 	<p class="pull-right"><a href="#">Back to top</a></p>
 	  
@@ -199,7 +208,6 @@
 	</div>
 	<!-- /Intro-->
 		
-
 		<div class="jumbotron top-space parallax">
 			<div class="container text-center">
 			
@@ -209,25 +217,25 @@
 				<div class="col-md-3 col-sm-6 highlight">
 					<div class="h-caption"><h3><i class="fa fa-smile-o fa-5"></i>Henry</h3></div>
 					<div class="h-body text-center">
-						<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?</strong></p>
+						<p><strong>description</strong></p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
 					<div class="h-caption"><h3><i class="fa fa-smile-o fa-5"></i>Anderson</h3></div>
 					<div class="h-body text-center">
-						<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit!</strong></p>
+						<p><strong>description</strong></p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
 					<div class="h-caption"><h3><i class="fa fa-smile-o fa-5"></i>Wyman</h3></div>
 					<div class="h-body text-center">
-						<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis, perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum reprehenderit dolorem dicta nesciunt corporis?</strong></p>
+						<p><strong>description</strong></p>
 					</div>
 				</div>
 				<div class="col-md-3 col-sm-6 highlight">
 					<div class="h-caption"><h3><i class="fa fa-smile-o fa-5"></i>Chung</h3></div>
 					<div class="h-body text-center">
-						<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias, excepturi, maiores, dolorem quasi reprehenderit illo accusamus nulla minima repudiandae quas ducimus reiciendis odio sequi atque temporibus facere corporis eos expedita?</strong></p>
+						<p><strong>description</strong></p>
 					</div>
 				</div>
 			</div> <!-- /row  -->
@@ -236,19 +244,19 @@
 				<div class="col-md-4 col-sm-6 highlight">
 					<div class="h-caption"><h3><i class="fa fa-smile-o fa-5"></i>Lydia</h3></div>
 					<div class="h-body text-center">
-						<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque aliquid adipisci aspernatur. Soluta quisquam dignissimos earum quasi voluptate. Amet, dignissimos, tenetur vitae dolor quam iusto assumenda hic reprehenderit?</strong></p>
+						<p><strong>description</strong></p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6 highlight">
 					<div class="h-caption"><h3><i class="fa fa-smile-o fa-5"></i>Lickie</h3></div>
 					<div class="h-body text-center">
-						<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores, commodi, sequi quis ad fugit omnis cumque a libero error nesciunt molestiae repellat quos perferendis numquam quibusdam rerum repellendus laboriosam reprehenderit!</strong></p>
+						<p><strong>description</strong></p>
 					</div>
 				</div>
 				<div class="col-md-4 col-sm-6 highlight">
 					<div class="h-caption"><h3><i class="fa fa-smile-o fa-5"></i>Victoria</h3></div>
 					<div class="h-body text-center">
-						<p><strong>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem, vitae, perferendis, perspiciatis nobis voluptate quod illum soluta minima ipsam ratione quia numquam eveniet eum reprehenderit dolorem dicta nesciunt corporis?</strong></p>
+						<p><strong>description</strong></p>
 					</div>
 				</div>
 			</div> <!-- /row  -->
@@ -283,19 +291,19 @@
 			<div class="container">
 				<div class="row">
 					
-					<div class="col-md-3 widget">
+					<div class="col-md-6 widget">
 						<h3 class="widget-title">Contact</h3>
 						<div class="widget-body">
-							<p>+234 23 9873237<br>
-								<a href="mailto:#">some.email@somewhere.com</a><br>
+							<p>Light of Wisdom<br>
+								<a href="mailto:#">lightofwisdom3111@gmail.com</a><br>
 								<br>
-								234 Hidden Pond Road, Ashland City, TN 37015
+								"phone: 31800000"
 							</p>	
 						</div>
 					</div>
 
-					<div class="col-md-3 widget">
-						<h3 class="widget-title">Follow me</h3>
+					<div class="col-md-6 widget">
+						<h3 class="widget-title">Follow us</h3>
 						<div class="widget-body">
 							<p class="follow-me-icons">
 								<a href=""><i class="fa fa-twitter fa-2"></i></a>
@@ -306,44 +314,13 @@
 						</div>
 					</div>
 
-					<div class="col-md-6 widget">
-						<h3 class="widget-title">Text widget</h3>
-						<div class="widget-body">
-							<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Excepturi, dolores, quibusdam architecto voluptatem amet fugiat nesciunt placeat provident cumque accusamus itaque voluptate modi quidem dolore optio velit hic iusto vero praesentium repellat commodi ad id expedita cupiditate repellendus possimus unde?</p>
-							<p>Eius consequatur nihil quibusdam! Laborum, rerum, quis, inventore ipsa autem repellat provident assumenda labore soluta minima alias temporibus facere distinctio quas adipisci nam sunt explicabo officia tenetur at ea quos doloribus dolorum voluptate reprehenderit architecto sint libero illo et hic.</p>
-						</div>
-					</div>
+			
 
 				</div> <!-- /row of widgets -->
 			</div>
 		</div>
 
-		<div class="footer2">
-			<div class="container">
-				<div class="row">
-					
-					<div class="col-md-6 widget">
-						<div class="widget-body">
-							<p class="simplenav">
-								<a href="#">Home</a> | 
-								<a href="#event">Event</a> |
-								<a href="#about">About us</a> |
-								<b><a href="loginwithgoogle()">Sign in</a></b>
-							</p>
-						</div>
-					</div>
-
-					<div class="col-md-6 widget">
-						<div class="widget-body">
-							<p class="text-right">
-								Copyright &copy; 2016, Light Of Wisdom. Designed by <a href="http://gettemplate.com/" rel="designer">gettemplate</a> 
-							</p>
-						</div>
-					</div>
-
-				</div> <!-- /row of widgets -->
-			</div>
-		</div>
+		
 
 	</footer>	
 

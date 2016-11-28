@@ -27,8 +27,8 @@ angular.module('teamform-manage_team-app', ['firebase'])
 
 
 	
-	$scope.teaminfo = {TeamLeader:"", Description:"" };
-	$scope.input = {description: ""};
+	$scope.teaminfo = {TeamLeader:"", Description:"", Forward:"", Midfield:"", LeftBack:"", RightBack:"", Goalkeeper:""};
+	$scope.input = {forward:"", midfield:"", leftBack:"", rightBack:"", goalkeeper:""};
 
 	var eventName, teamName;
 	eventName = getURLParameter("q");
@@ -68,6 +68,21 @@ angular.module('teamform-manage_team-app', ['firebase'])
 	ref = firebase.database().ref(refPath);
 	$scope.teaminfo = $firebaseObject(ref);
 
+	ref.set({
+		TeamName: teamName,
+		//TeamLeader : teamleader,
+		Description : "",
+		Forward : "",
+		Midfield :"",
+		LeftBack : "",
+		RightBack :"",
+		Goalkeeper :""
+	});
+
+	
+
+
+
 
 
 
@@ -78,13 +93,14 @@ angular.module('teamform-manage_team-app', ['firebase'])
 	$scope.teaminfo.$loaded()
 		.then( function(data) {
 			// Fill in some initial values when the DB entry doesn't exist			
-
 			// Enable the UI when the data is successfully loaded and synchornized
-			$('#manage_team_page_controller').show(); 
-
-			$scope.teaminfo.TeamLeader = teamleader;
-			$scope.teaminfo.TeamName = teamName;
+			//$('#manage_team_page_controller').show(); 
 			$scope.teaminfo.Description = $scope.input.description;
+			$scope.teaminfo.Forward = $scope.input.forward;
+			$scope.teaminfo.Midfield = $scope.input.midfield;
+			$scope.teaminfo.LeftBack = $scope.input.leftBack;
+			$scope.teaminfo.RightBack = $scope.input.rightBack;
+			$scope.teaminfo.Goalkeeper = $scope.input.goalkeeper;
 					}) 
 		.catch(function(error) {
 			// Database connection error handling...
@@ -95,8 +111,34 @@ angular.module('teamform-manage_team-app', ['firebase'])
 		$scope.teaminfo.$save();
 		// Finally, go back to the front-end
 		window.location.href= "team.html?q=" + eventName +"&tn=" + teamName;
+
+
+		
 	}
 	
+	$scope.processRequest = function(r) {
+		//$scope.test = "processRequest: " + r;
+		
+		if ( 
+		    $scope.param.teamMembers.indexOf(r) < 0 && 
+			$scope.param.teamMembers.length < $scope.param.currentTeamSize  ) {
+				
+			// Not exists, and the current number of team member is less than the preferred team size
+			$scope.param.teamMembers.push(r);
+			
+			$scope.saveFunc();
+		}
+	}
+	
+	$scope.removeMember = function(member) {
+		
+		var index = $scope.param.teamMembers.indexOf(member);
+		if ( index > -1 ) {
+			$scope.param.teamMembers.splice(index, 1); // remove that item
+			
+			$scope.saveFunc();
+		}
+		
 	}
 
 
@@ -104,5 +146,6 @@ angular.module('teamform-manage_team-app', ['firebase'])
 
 
 
- 
+
+	}
 ]);
