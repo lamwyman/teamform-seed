@@ -75,7 +75,7 @@
 					<li class="active"><a href="#">HOME</a></li>
 					<li><a href="#event">EVENTS</a></li>
 					<li><a href="#about">ABOUT US</a></li>
-					<li><a href="member.html">Member(FOR TEST)</a></li>
+					<li><a href="member.html">Member</a></li>
 					<li><a href="create_event.html">ADMIN</a></li>
 					<li><a class="btn" href="signin.html">SIGN IN</a></li>
 					<li><a class="btn" href="signup.html">SIGN UP</a></li>
@@ -146,17 +146,10 @@
 
                         <input id="input_text" type="text" class="input-lg" placeholder="Enter a name here">
                         <br>
-                        <em>Enter a name (e.g. COMP3111-L1, COMP3111-L2 or COMP3111H) to create/join an event</em>
                         <br>
                         <br>
 
-                        <div>
-                           
-                           <button id="btn_admin" type="button" class="btn btn-primary" >Administrator</button>
-                           <button id="btn_leader" type="button" class="btn btn-primary" >Team Leader</button>
-                           <button id="btn_member" type="button" class="btn btn-primary" >Member</button>
-
-                        </div>
+                        
                      </div>
 					 </div>
                   </div>
@@ -179,13 +172,15 @@
 
 		<div class="container text-center">
 			<div class="row" >
+			<p>Search an event:</p>
+			<p><input type="text" ng-model="test"></p>
 
 			<table align="center" border="1" style="background-color:#FFFFE0;border-color:#BDB76B;">
 			<tr style="background-color:#BDB76B;color:#ffffff;">
 			<td><b> Event Name </b></td><td><b> Holder </b></td><td><b> Team Size </b></td><td></td></tr>
 
-
-			<tr ng-repeat="e in events">
+	
+			<tr ng-repeat="e in events| filter:test">
 			<td>{{e.param.EventName}} </td>
 			<td>{{e.param.EventAdmin}} </td>
 			<td>{{e.param.TeamSize}}</td>
